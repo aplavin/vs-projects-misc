@@ -1,0 +1,29 @@
+﻿<Window x:Class="SearchFast.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="SearchFast"
+        Name="SearchFast"
+        Height="502" Width="610" xmlns:my="clr-namespace:SearchFast">
+    <Window.Resources>
+        <my:FileSizeConverter x:Key="FileSizeConverter" />
+    </Window.Resources>
+    <Grid Width="573">
+        <ComboBox Height="23" Name="comboBox" HorizontalAlignment="Right" VerticalAlignment="Top" Width="242" IsEditable="True" TextBoxBase.TextChanged="comboBox_TextChanged"/>
+        <ListView Height="432" Margin="0,29,0,0" Name="listView" Width="573" SelectionMode="Single" ItemsSource="{Binding Path=ListItems}">
+            <ListView.InputBindings>
+                <KeyBinding Key="Enter" Command="" />
+                <MouseBinding MouseAction="LeftDoubleClick" Command="" />
+            </ListView.InputBindings>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Имя" />
+                    <GridViewColumn Header="Дата изменения" DisplayMemberBinding="{Binding LastWriteTime, StringFormat={}{0:dd.MM.yyyy HH:mm}}" />
+                    <GridViewColumn Header="Размер" DisplayMemberBinding="{Binding Converter={StaticResource FileSizeConverter}}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Height="28" HorizontalAlignment="Right" Margin="0,0,276,0" Name="label1" VerticalAlignment="Top" />
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,0,550,0" Name="updateBtn" VerticalAlignment="Top" Width="23" Click="updateBtn_Click" />
+    </Grid>
+</Window>

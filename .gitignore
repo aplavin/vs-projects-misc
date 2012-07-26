@@ -1,0 +1,14 @@
+*ReSharper*
+/BatMan
+/e2Kindle
+/e2Kindle Web
+/GoogleApi
+/HtmlParserMajestic
+/PasswordStrengthener
+/Utilities
+/olympchecker*
+/NReadability
+.hg*
+.svn
+bin
+obj
